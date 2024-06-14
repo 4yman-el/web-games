@@ -20,21 +20,8 @@ const Game = {
         }
     },
 
-    swapModals() {
-        DOM.modeModal.classList.toggle('hidden');
-        DOM.winModal.classList.toggle('hidden');
-    },
-
-    hideModals() {
-        DOM.overlay.classList.add('hidden');
-    },
-
-    showModals() {
-        DOM.overlay.classList.remove('hidden');
-    },
-
     startGame(mode) {
-        Game.hideModals();
+        DOM.hideModals();
         Game.turn = Players.X;
         Game.difficulty = mode;
         Game.cells = [
@@ -132,8 +119,8 @@ const Game = {
         }
         DOM.board.classList.remove(Game.turn === Players.X ? "x" : "o");
         Game.startGame(GameModes.NORMAL);
-        Game.swapModals();
-        Game.showModals();
+        DOM.swapModals();
+        DOM.showModals();
     }
 };
 

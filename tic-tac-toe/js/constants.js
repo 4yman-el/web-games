@@ -8,7 +8,21 @@ const DOM = {
     restart: $('restart'),
     turn: $('game-turn'),
     board: $('game-board'),
-    cells: $qa('.cell')
+    cells: $qa('.cell'),
+
+
+    swapModals() {
+        DOM.modeModal.classList.toggle('hidden');
+        DOM.winModal.classList.toggle('hidden');
+    },
+
+    hideModals() {
+        DOM.overlay.classList.add('hidden');
+    },
+
+    showModals() {
+        DOM.overlay.classList.remove('hidden');
+    },
 };
 
 const Players = {
