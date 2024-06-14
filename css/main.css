@@ -1,0 +1,49 @@
+/* VARIABLES */
+:root {
+    --bg-1: #000;
+    --bg-2: #111;
+    --text: #EEE;
+    --color-1: #1C4;
+    --color-2: #228;
+    --font-1: "Noto Sans", Verdana, sans-serif;
+    --font-2: "Ubuntu Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-1: #FAFAFA;
+        --bg-2: #FFFFFF;
+        --text: #0A0A0A;
+        --color-1: #11e;
+        --color-2: #0f6;
+    }
+}
+
+/* FIXES */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* CSS */
+
+body {
+    min-height: 100vh;
+    color: var(--text);
+    background: var(--bg-1);
+    font-family: var(--font-1);
+}
+
+a {
+    color: var(--color-1);
+}

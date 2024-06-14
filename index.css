@@ -1,0 +1,52 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    margin: 5vh 0;
+}
+
+ul {
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+li {
+    vertical-align: middle;
+    width: 300px;
+    margin: 20px;
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    color: #000;
+    background: #ddd;
+    transition: transform .5s, box-shadow .5s;
+}
+
+li:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 1px #2229;
+}
+
+@media (prefers-color-scheme: dark) {
+    li {
+        color: var(--text);
+        background-color: var(--bg-2);
+        border: none;
+    }
+
+    li:hover {
+        box-shadow: none;
+    }
+}
+
+li a {
+    text-decoration: none;
+    font-size: 40px;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
