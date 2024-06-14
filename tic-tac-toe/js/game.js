@@ -1,22 +1,5 @@
-const DOM = {
-    overlay: $q('.overlay'),
-    modeModal: $('mode-modal'),
-    startNorm: $('start-normal'),
-    start2player: $('start-2player'),
-    winModal: $('win-modal'),
-    playerWins: $('player-wins'),
-    restart: $('restart'),
-    turn: $('game-turn'),
-    board: $('game-board'),
-    cells: $qa('.cell')
-};
-
-const EMPTY = 0;
-const X = 1;
-const O = 2;
-
-const NORMAL = 0;
-const TWO_PLAYERS = 1;
+import { DOM, Players, GameModes } from './constants.js';
+import AI from './ai.js';
 
 const Game = {
     cells: [
@@ -24,13 +7,13 @@ const Game = {
         [0, 0, 0],
         [0, 0, 0]
     ],
-    turn: X,
-    difficulty: TWO_PLAYERS,
+    turn: Players.X,
+    difficulty: GameModes.TWO_PLAYERS,
 
     getName(turn) {
-        if (turn === X) return 'Player (X)';
+        if (turn === Players.X) return 'Player (X)';
         
-        if (Game.difficulty === TWO_PLAYERS) {
+        if (Game.difficulty === GameModes.TWO_PLAYERS) {
             return 'Opponent (O)';
         } else {
             return 'Computer (O)';
@@ -52,7 +35,7 @@ const Game = {
 
     startGame(mode) {
         Game.hideModals();
-        Game.turn = X;
+        Game.turn = Players.X;
         Game.difficulty = mode;
         Game.cells = [
             [0, 0, 0],
@@ -60,8 +43,8 @@ const Game = {
             [0, 0, 0]
         ];
         Game.updateBoard();
-        if (Game.difficulty !== TWO_PLAYERS && Game.turn === O) {
-            Game.aiMove();
+        if (Game.difficulty === GameModes.NORMAL && Game.turn === Players.O) {
+            AI.move();
         }
     },
 
@@ -70,10 +53,10 @@ const Game = {
             list.forEach((cell, j) => {
                 const elem = DOM.cells[i * 3 + j];
                 switch (cell) {
-                    case X:
+                    case Players.X:
                         elem.classList.add("x");
                         break;
-                    case O:
+                    case Players.O:
                         elem.classList.add("o");
                         break;
                     default:
@@ -86,7 +69,7 @@ const Game = {
     },
 
     captureCell(x, y) {
-        if (Game.cells[x][y] !== EMPTY) {
+        if (Game.cells[x][y] !== Players.EMPTY) {
             return;
         }
         Game.cells[x][y] = Game.turn;
@@ -94,8 +77,8 @@ const Game = {
             return;
         }
         Game.swapTurn();
-        if (Game.difficulty !== TWO_PLAYERS && Game.turn === O) {
-            Game.aiMove();
+        if (Game.difficulty === GameModes.NORMAL && Game.turn === Players.O) {
+            AI.move();
         }
         Game.updateBoard();
     },
@@ -117,7 +100,7 @@ const Game = {
 
         for (let line of lines) {
             const [a, b, c] = line;
-            if (Game.cells[a[0]][a[1]] !== EMPTY &&
+            if (Game.cells[a[0]][a[1]] !== Players.EMPTY &&
                 Game.cells[a[0]][a[1]] === Game.cells[b[0]][b[1]] &&
                 Game.cells[a[0]][a[1]] === Game.cells[c[0]][c[1]]) {
                 Game.endGame(Game.turn, false);
@@ -125,7 +108,7 @@ const Game = {
             }
         }
 
-        const isTie = Game.cells.flat().every(cell => cell !== EMPTY);
+        const isTie = Game.cells.flat().every(cell => cell !== Players.EMPTY);
         if (isTie) {
             Game.endGame(null, true);
             return true;
@@ -135,9 +118,9 @@ const Game = {
     },
 
     swapTurn() {
-        Game.turn = (Game.turn === X) ? O : X;
-        DOM.board.classList.remove(Game.turn === X ? "o" : "x");
-        DOM.board.classList.add(Game.turn === X ? "x" : "o");
+        Game.turn = (Game.turn === Players.X) ? Players.O : Players.X;
+        DOM.board.classList.remove(Game.turn === Players.X ? "o" : "x");
+        DOM.board.classList.add(Game.turn === Players.X ? "x" : "o");
         DOM.turn.innerText = `Turn: ${Game.getName(Game.turn)}`;
     },
 
@@ -147,44 +130,11 @@ const Game = {
         } else {
             DOM.playerWins.innerText = `${Game.getName(winner)} Wins!`;
         }
-        Game.startGame(NORMAL);
+        DOM.board.classList.remove(Game.turn === Players.X ? "x" : "o");
+        Game.startGame(GameModes.NORMAL);
         Game.swapModals();
         Game.showModals();
-    },
-
-    aiMove() {
-        const availableMoves = [];
-
-        // Collect all available moves (empty cells)
-        for (let x = 0; x < 3; x++) {
-            for (let y = 0; y < 3; y++) {
-                if (Game.cells[x][y] === EMPTY) {
-                    availableMoves.push({ x, y });
-                }
-            }
-        }
-
-        // Pick a random move from available moves
-        const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-        if (randomMove) {
-            Game.captureCell(randomMove.x, randomMove.y);
-        }
     }
 };
 
-// Event Listeners
-DOM.startNorm.addEventListener('click', () => Game.startGame(NORMAL));
-DOM.start2player.addEventListener('click', () => Game.startGame(TWO_PLAYERS));
-DOM.restart.addEventListener('click', () => {
-    Game.swapModals();
-    Game.showModals();
-});
-
-// Add click events to cells
-DOM.cells.forEach((cell, index) => {
-    cell.addEventListener('click', () => {
-        const x = Math.floor(index / 3);
-        const y = index % 3;
-        Game.captureCell(x, y);
-    });
-});
+export default Game;
