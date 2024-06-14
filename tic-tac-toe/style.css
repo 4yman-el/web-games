@@ -1,0 +1,132 @@
+.hidden {
+    display: none !important;
+}
+
+main, .overlay, #game{
+    height: 100vh;
+}
+
+
+.overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: #7772;
+}
+
+.modal {
+    width: 80%;
+    height: 80%;
+    padding: 2%;
+    background: var(--bg-1);
+    border-radius: 15px;
+    text-align: center;
+}
+
+#mode-modal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2vh;
+}
+
+#mode-modal button,
+#restart {
+    width: 30%;
+    margin: 2vh 20%;
+    padding: 2vh 0;
+    font-size: 1.5em;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 2%;
+}
+
+#game header h1 {
+    font-size: 2.8rem;
+}
+
+.game-info {
+    text-align: center;
+}
+
+.board {
+    width: 300px;
+    height: 300px;
+
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--text);
+
+    cursor: pointer;
+}
+
+.cell::before,
+.cell::after {
+    content: '';
+    position: absolute;
+    background: var(--cell-color);
+}
+
+/* X */
+.board.x .cell:not(.o):hover::before,
+.cell.x::before ,
+.board.x .cell:not(.o):hover::after,
+.cell.x::after {
+    width: 10px;
+    height: 100px;
+}
+.board.x .cell:not(.o):hover::before,
+.cell.x::before {
+    transform: rotate(45deg);
+}
+.board.x .cell:not(.o):hover::after,
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+/* Y */
+.board.o .cell:not(.x):hover::before,
+.cell.o::before ,
+.board.o .cell:not(.x):hover::after,
+.cell.o::after {
+    border-radius: 50%;
+}
+.board.o .cell:not(.x):hover::before,
+.cell.o::before {
+    width: 90px;
+    height: 90px;
+}
+.board.o .cell:not(.x):hover::after,
+.cell.o::after {
+    width: 70px;
+    height: 70px;
+    background: var(--bg-1);
+}
+
+.board .cell:hover {
+    --cell-color: #999;
+}
+
+.cell.x,
+.cell.o {
+    --cell-color: var(--text) !important;
+    cursor: not-allowed;
+}

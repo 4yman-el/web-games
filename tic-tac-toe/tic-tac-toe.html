@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="overlay">
+            <div id="mode-modal" class="modal">
+                <h2>Tic Tac Toe</h2>
+                <button id="start-easy">Easy</button>
+                <button id="start-norm">Hard</button>
+                <button id="start-2player">2 Players</button>
+            </div>
+            <div id="win-modal" class="modal hidden">
+                <h2 id="player-wins">Player Wins!</h2>
+                <button id="restart">Restart</button>
+            </div>
+        </div>
+        <section id="game">
+            <header>
+                <h1>Tic Tac Toe</h1>
+                <p class="game-info" id="game-turn">turn (X)</p>
+            </header>
+            <div class="board x" id="game-board">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/dom.js" defer></script>
+    <script src="game.js" defer></script>
+</body>
+</html>
