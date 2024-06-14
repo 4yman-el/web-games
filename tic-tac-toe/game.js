@@ -147,6 +147,7 @@ const Game = {
         } else {
             DOM.playerWins.innerText = `${Game.getName(winner)} Wins!`;
         }
+        DOM.board.classList.remove(Game.turn === X ? "x" : "o");
         Game.startGame(NORMAL);
         Game.swapModals();
         Game.showModals();
