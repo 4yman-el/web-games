@@ -5,8 +5,8 @@ import Game from './game.js';
 DOM.startNorm.addEventListener('click', () => Game.startGame(GameModes.NORMAL));
 DOM.start2player.addEventListener('click', () => Game.startGame(GameModes.TWO_PLAYERS));
 DOM.restart.addEventListener('click', () => {
-    Game.swapModals();
-    Game.showModals();
+    DOM.swapModals();
+    DOM.showModals();
 });
 
 // Add click events to cells

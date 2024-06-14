@@ -35,6 +35,15 @@ const Game = {
         }
     },
 
+    resetGame (){
+        Game.cells = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+        Game.updateBoard();
+    },
+
     updateBoard() {
         Game.cells.forEach((list, i) => {
             list.forEach((cell, j) => {
@@ -117,8 +126,8 @@ const Game = {
         } else {
             DOM.playerWins.innerText = `${Game.getName(winner)} Wins!`;
         }
+        Game.resetGame();
         DOM.board.classList.remove(Game.turn === Players.X ? "x" : "o");
-        Game.startGame(GameModes.NORMAL);
         DOM.swapModals();
         DOM.showModals();
     }
