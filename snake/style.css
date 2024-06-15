@@ -32,7 +32,6 @@ main, #game{
 #game {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 
@@ -58,6 +57,14 @@ main, #game{
 }
 
 @media (max-width: 1024px) {
+    .game-interact {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
     #mobile-controls {
         width: 200px;
         max-width: 60vw;
@@ -92,7 +99,7 @@ main, #game{
       .RightArrow { grid-area: RightArrow; }
 }
 
-@media (max-height: 520px) and (max-width: 1024px) {
+@media (max-height: 720px) and (max-width: 1024px) {
     #game h1 {
         display: none;
     }
