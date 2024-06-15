@@ -31,9 +31,12 @@ const Game = {
         gameState.reset();
         Game.updateScore();
         DOM.hideModal();
-        Game.gameLoop = setInterval(Game.frame, 130);
+        Game.gameLoop = setInterval(Game.frame, 150);
     },
     changeDir (dir){
+        if(Game.moved) return;
+        Game.moved = true;
+
         if (dir === "ArrowUp" && gameState.dir[1] != 1) {
             gameState.dir[0] = 0;
             gameState.dir[1] = -1;
@@ -49,12 +52,6 @@ const Game = {
         }
     },
     growSnake (){
-        /**
-         * Causes bugs and speeds up snake
-        gameState.snake.unshift([
-            gameState.apple[0] + gameState.dir[0],
-            gameState.apple[1] + gameState.dir[1]
-        ]);*/
         gameState.freezeTail = true;
         gameState.score++;
         Game.updateScore();
@@ -118,9 +115,16 @@ const Game = {
         const ctx = Game.gameCanvas;
 
         ctx.clearRect(0, 0, 400, 400);
-        ctx.fillStyle = '#9F9';
 
-        for (let i = 0; i < gameState.snake.length; i++) {
+        ctx.fillStyle = '#9F9';
+        ctx.fillRect(
+            gameState.snake[0][0] * 40,
+            gameState.snake[0][1] * 40,
+            40, 40
+        );
+
+        ctx.fillStyle = '#6E7';
+        for (let i = 1; i < gameState.snake.length - 1; i++) {
             ctx.fillRect(
                 gameState.snake[i][0] * 40,
                 gameState.snake[i][1] * 40,
@@ -128,16 +132,21 @@ const Game = {
             );
         }
 
-        ctx.fillStyle = '#99F';
-
+        ctx.fillStyle = '#3A5';
         ctx.fillRect(
-            gameState.apple[0] * 40,
-            gameState.apple[1] * 40,
+            gameState.snake[gameState.snake.length - 1][0] * 40,
+            gameState.snake[gameState.snake.length - 1][1] * 40,
             40, 40
+        );
+
+        ctx.fillStyle = '#99F';
+        ctx.fillRect(
+            gameState.apple[0] * 40 + 5,
+            gameState.apple[1] * 40 + 5,
+            30, 30
         );
     },
     endGame() {
-        //TODO
         clearInterval(Game.gameLoop);
         gameState.over = true;
         gameState.reset();
