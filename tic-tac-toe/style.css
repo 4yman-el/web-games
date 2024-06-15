@@ -76,8 +76,6 @@ main, .overlay, #game{
     align-items: center;
 
     border: 1px solid var(--text);
-
-    cursor: pointer;
 }
 
 .cell::before,
@@ -131,4 +129,10 @@ main, .overlay, #game{
 .cell.o {
     --cell-color: var(--text) !important;
     cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .cell {
+        cursor: pointer;
+    }
 }
