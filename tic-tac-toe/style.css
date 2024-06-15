@@ -38,8 +38,7 @@ main, .overlay, #game{
 
 #mode-modal button,
 #restart {
-    width: 30%;
-    padding: 2vh 0;
+    padding: 2vh 4vw;
     font-size: 1.5em;
 }
 
@@ -77,8 +76,6 @@ main, .overlay, #game{
     align-items: center;
 
     border: 1px solid var(--text);
-
-    cursor: pointer;
 }
 
 .cell::before,
@@ -132,4 +129,10 @@ main, .overlay, #game{
 .cell.o {
     --cell-color: var(--text) !important;
     cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .cell {
+        cursor: pointer;
+    }
 }
