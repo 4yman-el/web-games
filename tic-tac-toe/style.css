@@ -38,8 +38,7 @@ main, .overlay, #game{
 
 #mode-modal button,
 #restart {
-    width: 30%;
-    padding: 2vh 0;
+    padding: 2vh 4vw;
     font-size: 1.5em;
 }
 
