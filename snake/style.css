@@ -40,10 +40,6 @@ main, #game{
     font-size: 2.8rem;
 }
 
-.game-info {
-    text-align: center;
-}
-
 #game-canvas {
     max-width: 95vw;
     aspect-ratio: 1/1;

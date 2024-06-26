@@ -1,0 +1,81 @@
+.hidden {
+    display: none !important;
+}
+
+main, #game{
+    height: 100vh;
+}
+
+.modal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 2%;
+    background: var(--bg-2);
+}
+
+#mode-modal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2vh;
+}
+
+#restart {
+    padding: 2vh 4vw;
+    font-size: 1.5em;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#game header {
+    text-align: center;
+}
+
+#game header h1 {
+    font-size: 2.8rem;
+}
+
+#game-render {
+    position: relative;
+    flex-grow: 0.95;
+    width: 95%;
+    border: 1px solid var(--text);
+}
+
+.player,
+.opponent,
+.ball {
+    position: absolute;
+    background-color: var(--text);
+}
+
+.player,
+.opponent {
+    width: 10px;
+    height: 50px;
+}
+
+.opponent {
+    right: 0;
+}
+
+.ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+@media (max-height: 720px) and (max-width: 1024px) {
+    #game h1 {
+        display: none;
+    }
+}

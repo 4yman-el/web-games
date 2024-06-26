@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section id="game">
+            <header>
+                <h1>Pong</h1>
+                <h4>Press arrow keys or touch to start</h4>
+                <p id="game-score">0 : 0</p>
+            </header>
+            <div id="game-render">
+                <div class="player"></div>
+                <div class="ball" style="top: 50%; left: 50%;"></div>
+                <div class="opponent"></div>
+            </div>
+        </section>
+    </main>
+    <script src="../js/dom.js" defer></script>
+    <script src="js/gameDOM.js"     type="module" defer></script>
+    <script src="js/game.js"        type="module" defer></script>
+    <script src="js/main.js"        type="module" defer></script>
+</body>
+</html>
