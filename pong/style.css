@@ -74,6 +74,17 @@ main, #game{
     border-radius: 100%;
 }
 
+.unofficial {
+    position: absolute;
+    z-index: 1000;
+    bottom: 0;
+    right: 0;
+    user-select: none;
+    cursor: pointer;
+    background: var(--bg-1);
+    opacity: .8;
+}
+
 @media (max-height: 720px) and (max-width: 1024px) {
     #game h1 {
         display: none;
