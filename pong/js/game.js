@@ -11,6 +11,21 @@ let gameState = {
 const Game = {
     paddleHeight: .08,
     ballSize: .2,
+
+    delta: 1,
+    frameID: 0,
+    frame (){
+        Game.update();
+        Game.render();
+
+        Game.frameID = requestAnimationFrame(Game.frame);
+    },
+    update (){
+
+    },
+    render (){
+
+    }
 };
 
 export default Game;
