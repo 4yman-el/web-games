@@ -1,5 +1,5 @@
 import DOM from './gameDOM.js';
-import Game from './game.js';
+import {Game} from './game.js';
 
 /* Event Listeners
 DOM.restart.addEventListener("click", Game.startGame);

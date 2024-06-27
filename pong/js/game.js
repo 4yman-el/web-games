@@ -1,9 +1,11 @@
 import DOM from './gameDOM.js';
 import AI from './ai.js';
 
+const MAIN_SPEED = 2;
+
 let gameState = {
     playerTop: 46,
-    playerDir: [0, 0],
+    playerDir: 0,
     opponentTop: 46,
     ball: [48, 48],
     ballVel: [0, 1],
@@ -43,12 +45,14 @@ const Game = {
         gameState.ball[0] += gameState.ballVel[0];
         gameState.ball[1] += gameState.ballVel[1];
 
-        // Get player input to change pos
+        // player
+        gameState.playerTop += gameState.playerDir * MAIN_SPEED;
 
         // Get AI move dir
+        gameState.opponentTop += AI.getDir();
 
         // COLLISION DETECTION
-        // **** potato
+        // potato
 
 
     },
@@ -61,4 +65,4 @@ const Game = {
     },
 };
 
-export default Game;
+export {Game, gameState};
