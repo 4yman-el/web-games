@@ -11,4 +11,3 @@ DOM.mobileButtons[1].addEventListener("click", () => Game.changeDir("ArrowLeft")
 DOM.mobileButtons[2].addEventListener("click", () => Game.changeDir("ArrowDown"));
 DOM.mobileButtons[3].addEventListener("click", () => Game.changeDir("ArrowRight"));
 //*/
-Game.startGame();

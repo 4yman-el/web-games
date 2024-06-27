@@ -47,7 +47,7 @@ main, #game{
 #game-render {
     position: relative;
     flex-grow: 0.95;
-    width: 95%;
+    aspect-ratio: 2/3;
     border: 1px solid var(--text);
 }
 
@@ -60,8 +60,8 @@ main, #game{
 
 .player,
 .opponent {
-    width: 10px;
-    height: 50px;
+    width: 2%;
+    height: 8%;
 }
 
 .opponent {
@@ -69,8 +69,8 @@ main, #game{
 }
 
 .ball {
-    width: 20px;
-    height: 20px;
+    width: 3%;
+    height: 2%;
     border-radius: 100%;
 }
 
