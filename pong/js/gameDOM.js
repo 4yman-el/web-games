@@ -8,8 +8,8 @@ const DOM = {
         DOM.score.innerText = `Player ${player} : ${opponent} Opponent`;
     },
     renderBall (ball){
-        DOM.ball.top = `${ball[0] / 3}%`;
-        DOM.ball.right = `${ball[1] / 3}%`;
+        DOM.ball.top = `${ball[0]}%`;
+        DOM.ball.right = `${ball[1]}%`;
     }
 };
 
